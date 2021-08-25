@@ -168,7 +168,7 @@ src
 
 #### ERD Model
 
-![imageAlt](https://github.com/Deleon06/NewMenu/blob/main/NewMenu%20ERD.png)
+![imageAlt](https://github.com/Deleon06/NewMenu/blob/main/NewMenu%20WireFrame.png)
 
 ***
 
