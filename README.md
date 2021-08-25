@@ -165,7 +165,7 @@ src
 
 #### ERD Model
 
-[ERD Sample](https://drive.google.com/file/d/1kLyQTZqfcA4jjKWQexfEkG2UspyclK8Q/view)
+![imageAlt](https://drive.google.com/file/d/18_pddCpH83kWzjpxmMzM2XmV61_PdOVr/view?usp=sharing)
 
 ***
 
