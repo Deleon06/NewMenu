@@ -28,8 +28,6 @@ A web based application that allows restaurants owner to create random or custom
 
 ### Libraries and Dependencies
 
-> Use this section to list all supporting libraries and dependencies, and their role in the project. Below is an example - this needs to be replaced!
-
 |     Library      | Description                                |
 | :--------------: | :----------------------------------------- |
 |      React       | Design simple views for each state in your application |
@@ -41,7 +39,10 @@ A web based application that allows restaurants owner to create random or custom
 
 ## WireFrames
 
-![imageAlt](https://github.com/Deleon06/NewMenu/blob/main/NewMenu%20WireFrame.png))
+![imageAlt](https://github.com/Deleon06/NewMenu/blob/main/NewMenu%20WireFrame.png)
+
+## Views Tree Sample
+![imageAlt](https://github.com/Deleon06/NewMenu/blob/main/NewMenu%20Views%20Tree.png)
 
 ## Component Architecture
 
@@ -161,22 +162,25 @@ src
 | Component | Priority | Estimated Time | Time Invested | Actual Time |
 | --- | :---: |  :---: | :---: | :---: |
 | Creating Branches | E | .5hrs | hrs | hrs |
-| Initial Skeleton | M | 3hrs | hrs | hrs |
-| Component Setup | H | 3hrs | hrs | hrs |
-| DB Setup | H | 3hrs | hrs | hrs |
+| Back End Crud | H | 3hrs | hrs | hrs |
+| Back End Routes| H| 2hrs| hrs | hrs |
 | Backend Functionality debugging | H | 2hrs | hrs | hrs |
-| Landing Page | H | 3hrs | hrs | hrs |
-| Detail Page | H | 3hrs | hrs | hrs |
-| Gallery For Listings (Desktop) | H | 2hrs | hrs | hrs |
-| Adding Search Bar & Filter | M | 2 hrs | hrs | hrs |
+| Landing Page| H | 1hrs | hrs | hrs |
+| CreateMenu Page | H | 3hrs | hrs | hrs |
+| Component Setup | H | 3hrs | hrs | hrs |
+| Menu List| H | 2 hrs | hrs | hrs |
+| Completed Menu| 2hrs | hrs | hrs
+| Edit Functionality | M | 1 hrs | hrs | hrs |
+| Delete Functionality | M | 1hrs | hrs | hrs |
+| Styling| H | 3hrs | hrs | hrs |
+| Specific Menu Page | H | 2hrs | hrs | hrs |
+| More Styling| M | 2hrs | hrs |
 | Sign-in/Sign-up | H | 3hrs | hrs | hrs |
-| Modals | M | 3hrs | hrs | hrs |
-| Media Queries | M | 2hrs | 3hrs | 3hrs |
-| Debugging & troubleshooting | H | 3hrs | 6hrs | 6hrs |
-| Getting user feedback | M | 2hrs | 3hrs | 3hrs |
-| Testing functionality | H | 2hrs | 3hrs | 3hrs |
-| Mock Presentation(s) | M | 1hr | .5 hrs | .5 hrs |
-| Total | 37.5 | hrs | 
+| Media Queries | M | 2hrs | hrs | hrs |
+| Debugging & troubleshooting | H | 3hrs | hrs | hrs |
+| Testing functionality | H | 2hrs | hrs | hrs |
+| Mock Presentation(s) | M | 1hr |  hrs | hrs |
+| Total | 41.5 | hrs | 
 
 #### ERD Model
 
@@ -194,8 +198,4 @@ src
 
 ## Code Showcase
 
-> Use this section to include a brief code snippet of functionality that you are proud of and a brief description.
-
 ## Code Issues & Resolutions
-
-> Use this section to list of all major issues encountered and their resolution.
