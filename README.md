@@ -61,6 +61,12 @@ src
       |__ Home/
             |__ Home.jsx
             |__ Home.css
+      |__ SignIn/
+            |__ SignIn.jsx
+            |__ SignIn.css
+      |__ SignUp/
+            |__ SignUp.jsx
+            |__ SignUp.css
       |__ CreateMenuFeatures/
             |__ CreateMenuFeatures.jsx
             |__ CreateMenuFeatures.css
@@ -113,9 +119,9 @@ src
       |__ Home/
             |__ Home.jsx
             |__ Home.css
-      |__ SignInSignOut/
-            |__ SignInSignOut.jsx
-            |__ SignInSignOut.css
+      |__ SignInSignUp/
+            |__ SignInSignUp.jsx
+            |__ SignInSignUp.css
       |__ CreateMenu/
             |__ CreateMenu.jsx
             |__ CreateMenu.css
