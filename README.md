@@ -119,9 +119,15 @@ src
       |__ Home/
             |__ Home.jsx
             |__ Home.css
-      |__ SignInSignUp/
-            |__ SignInSignUp.jsx
-            |__ SignInSignUp.css
+      |__ SignIn/
+            |__ SignIn.jsx
+            |__ SignIn.css
+      |__ SignUp/
+            |__ SignUp.jsx
+            |__ SignUp.css
+      |__ MenuList/
+            |__ MenuList.jsx
+            |__ MenuList.css
       |__ CreateMenu/
             |__ CreateMenu.jsx
             |__ CreateMenu.css
