@@ -5,8 +5,6 @@ A web based application that allows restaurants owner to create random or custom
 
 ![imageAlt](https://github.com/Deleon06/NewMenu/blob/main/NewMenu.png)
 
-![imageAlt](https://i.imgur.com/tWGa9n0.png)
-
 ## MVP
 - Users should be able to sign-in/sign-out
 - able to create Dinner Menu
@@ -49,12 +47,97 @@ A web based application that allows restaurants owner to create random or custom
 src
 |__ assets/
       |__ fonts
-      |__ graphics
       |__ images
-      |__ mockups
 |__ components/
-      |__ Header.jsx
+      |__ Navbar/
+            |__ Navbar.jsx
+            |__ Navbar.css
+      |__ Footer/
+            |__ Footer.jsx
+            |__ Footer.css
+      |__ Home/
+            |__ Home.jsx
+            |__ Home.css
+      |__ CreateMenuFeatures/
+            |__ CreateMenuFeatures.jsx
+            |__ CreateMenuFeatures.css
+      |__ BreakfastMenuOptions/
+            |__ BreakfastMenuOptions.jsx
+            |__ BreakfastMenuOptions.css
+      |__ LunchMenuOptions/
+            |__ LunchMenuOptions.jsx
+            |__ LunchMenuOptions.css
+      |__ DinnerMenuOptions/
+             |__ DinnerMenuOptions.jsx
+             |__ DinnerMenuOptions.css
+      |__ CocktailsMenuOptions/
+            |__ CocktailsMenuOptions.jsx
+            |__ CocktailsMenuOptions.css
+      |__ BeersMenuOptions/
+            |__ BeersMenuOptions.jsx
+            |__ BeersMenuOptions.css
+      |__ WinesMenuOptions/
+            |__ WinesMenuOptions.jsx
+            |__ WinesMenuOptions.css
+      |__ AddtoBreakfast/
+            |__ AddtoBreakfast.jsx
+            |__ AddtoBreakfast.css
+      |__ AddtoLunch/
+            |__ AddtoLunch.jsx
+            |__ AddtoLunch.css
+      |__ AddtoDinner/
+            |__ AddtoDinner.jsx
+            |__ AddtoDinner.css
+      |__ AddtoCocktails/
+            |__ AddtoCocktails.jsx
+            |__ AddtoCocktails.css
+      |__ AddtoBeers/
+             |__ AddtoBeers.jsx
+             |__ AddtoBeers.css
+      |__ AddtoWines/
+            |__ AddtoWines.jsx
+            |__ AddtoWines.css
+      |__UnfinidedMenuList/
+            |__UnfinidedMenuList.jsx
+            |__UnfinidedMenuList.css
+      |__CompletedMenuList/
+            |__CompletedMenuList.jsx
+            |__CompletedMenuList.css
+      |__GeneratorSelector/
+            |__GeneratorSelector.jsx
+            |__GeneratorSelector.css
+|__ views/
+      |__ Home/
+            |__ Home.jsx
+            |__ Home.css
+      |__ SignInSignOut/
+            |__ SignInSignOut.jsx
+            |__ SignInSignOut.css
+      |__ CreateMenu/
+            |__ CreateMenu.jsx
+            |__ CreateMenu.css
+      |__ MenuStyleGenerator/
+            |__ MenuStyleGenerator.jsx
+            |__ MenuStyleGenerator.css
+      |__ MenuSample/
+            |__ MenuSample.jsx
+            |__ MenuSample.css
+      |__ CompletedMenuList/
+            |__ CompletedMenuList.jsx
+            |__ CompletedMenuList.css
+      |__ CreateSpecificMenu/
+            |__ CreateSpecificMenu.jsx
+            |__ CreateSpecificMenu.css
+      |__ AddtoSpecificMenu/
+            |__ AddtoSpecificMenu.jsx
+            |__ AddtoSpecificMenu.css
+|__ layout/
+      |__ Layout.jsx
 |__ services/
+      |__ apiConfig.js
+      |__ auth.js
+      |__ menu.js
+      |__ user.js
 
 ```
 
