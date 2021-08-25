@@ -175,7 +175,7 @@ src
 | Edit Functionality | M | 1 hrs | hrs | hrs |
 | Delete Functionality | M | 1hrs | hrs | hrs |
 | More Back End Functionality| M| 1 hrs | hrs | hrs
-| More Styling| M | 2hrs | hrs |
+| More Styling| M | 2hrs | hrs | hrs |
 | Media Queries | M | 3hrs | hrs | hrs |
 | PMVP Adding Additional Menus| M | 10hrs | hrs | hrs |
 | Debugging & troubleshooting | H | 3hrs | hrs | hrs |
