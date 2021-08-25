@@ -164,23 +164,24 @@ src
 | Creating Branches | E | .5hrs | hrs | hrs |
 | Back End Crud | H | 3hrs | hrs | hrs |
 | Back End Routes| H| 2hrs| hrs | hrs |
+| Back End Auth| H | 1hrs | hrs | hrs |
 | Backend Functionality debugging | H | 2hrs | hrs | hrs |
 | Landing Page| H | 1hrs | hrs | hrs |
 | CreateMenu Page | H | 3hrs | hrs | hrs |
+| Menu List Page| H | 2 hrs | hrs | hrs |
+| Styling| H | 6hrs | hrs | hrs |
+| Completed Menu List| H | 2hrs | hrs | hrs |
 | Component Setup | H | 3hrs | hrs | hrs |
-| Menu List| H | 2 hrs | hrs | hrs |
-| Completed Menu| 2hrs | hrs | hrs
 | Edit Functionality | M | 1 hrs | hrs | hrs |
 | Delete Functionality | M | 1hrs | hrs | hrs |
-| Styling| H | 3hrs | hrs | hrs |
-| Specific Menu Page | H | 2hrs | hrs | hrs |
+| More Back End Functionality| M| 1 hrs | hrs | hrs
 | More Styling| M | 2hrs | hrs |
-| Sign-in/Sign-up | H | 3hrs | hrs | hrs |
-| Media Queries | M | 2hrs | hrs | hrs |
+| Media Queries | M | 3hrs | hrs | hrs |
+| PMVP Adding Additional Menus| M | 10hrs | hrs | hrs |
 | Debugging & troubleshooting | H | 3hrs | hrs | hrs |
 | Testing functionality | H | 2hrs | hrs | hrs |
 | Mock Presentation(s) | M | 1hr |  hrs | hrs |
-| Total | 41.5 | hrs | 
+| Total | 49.5 | hrs | 
 
 #### ERD Model
 
