@@ -39,9 +39,9 @@ A web based application that allows restaurants owner to create random or custom
 
 <br>
 
-##WireFrames
+## WireFrames
 
-![imageAlt](https://github.com/Deleon06/NewMenu/blob/main/NewMenu.png)
+![imageAlt](https://github.com/Deleon06/NewMenu/blob/main/NewMenu%20WireFrame.png))
 
 ## Component Architecture
 
@@ -168,7 +168,7 @@ src
 
 #### ERD Model
 
-![imageAlt](https://github.com/Deleon06/NewMenu/blob/main/NewMenu%20WireFrame.png)
+![imageAlt](https://github.com/Deleon06/NewMenu/blob/main/NewMenu%20ERD.png)
 
 ***
 
