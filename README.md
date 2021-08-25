@@ -3,8 +3,6 @@
 ## Overview
 A web based application that allows restaurants owner to create random or custom menus for their restaurants.
 
-![imageAlt](https://github.com/Deleon06/NewMenu/blob/main/NewMenu.png)
-
 ## MVP
 - Users should be able to sign-in/sign-out
 - able to create Dinner Menu
@@ -40,7 +38,12 @@ A web based application that allows restaurants owner to create random or custom
 |     Bcrypt       | is a hashing algorithm designed by Niels Provos and David Mazières of the OpenBSD Project |
 
 <br>
-#### Component Architecture
+
+##WireFrames
+
+![imageAlt](https://github.com/Deleon06/NewMenu/blob/main/NewMenu.png)
+
+## Component Architecture
 
 ``` structure
 
@@ -165,7 +168,7 @@ src
 
 #### ERD Model
 
-![imageAlt](https://drive.google.com/file/d/18_pddCpH83kWzjpxmMzM2XmV61_PdOVr/view?usp=sharing)
+![imageAlt](https://github.com/Deleon06/NewMenu/blob/main/NewMenu%20ERD.png)
 
 ***
 
