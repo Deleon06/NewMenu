@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :update, :destroy]
+  before_action :set_item, only: [:show, :update, :destroy, :add_to_category]
 
   # GET /items
   def index
@@ -40,7 +40,10 @@ class ItemsController < ApplicationController
   end
 
   def add_to_category
-    
+    @category = Category.find(params[:category_id])
+    @category.items << @item
+
+    render json: @category, include: :items
   end
   private
     # Use callbacks to share common setup or constraints between actions.

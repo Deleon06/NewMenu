@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  before_action :set_category, only: [:show, :update, :destroy]
+  before_action :set_category, only: [:show, :update, :destroy, :add_to_menu]
 
   # GET /categories
   def index
@@ -40,7 +40,10 @@ class CategoriesController < ApplicationController
   end
 
   def add_to_menu
-    
+    @menu = Menu.find(params[:menu_id])
+    @menu.categories << @category
+
+    render json: @menu, include: :categories    
   end
 
   private
