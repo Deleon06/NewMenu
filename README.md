@@ -17,7 +17,7 @@ A web based application that allows restaurants owner to create random or custom
 ## Goals
 |  Day | Deliverable | Status
 |---|---| ---|
-|August 25th| Prompt / Wireframes / Timeframes / Approval | Incomplete
+|August 25th| Prompt / Wireframes / Timeframes / Approval | Complete
 |August 26rd| Core Application Structure | Incomplete
 |August 27th| MVP Functionality | Incomplete
 |August 28th| Styling MVP | Incomplete
