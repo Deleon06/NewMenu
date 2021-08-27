@@ -7,6 +7,7 @@ import {useState, useEffect} from 'react'
 import { registerUser, removeToken, signInUser, verifyUser } from './services/auth';
 import Register from './views/SignIn/Register';
 import MainContainer from './containers/MainContainer';
+import MenuContainer from './containers/MenuContainer';
 
 
 function App() {
@@ -24,7 +25,7 @@ function App() {
   const handleSignIn = async(signInData) => {
     const userData = await signInUser(signInData)
     setCurrentUser(userData)
-    history.push('/')
+    history.push('/show')
   }
 
   const handleRegister = async(registerData) => {
@@ -50,9 +51,13 @@ function App() {
           <Route path='/register'>
             <Register handleRegister={handleRegister}/>
           </Route>
+          <Route path='/show'>
+            <MenuContainer />
+          </Route>
           <Route path='/'>
              <MainContainer />
           </Route>
+  
         </Switch>
       </Layout>
     </div>
