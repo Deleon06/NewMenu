@@ -21,7 +21,7 @@ export const addCategoryToMenu = async (menuId, categoryData) => {
 
 export const putCategory = async(menuId,categoryId,categoryData) => {
     try {
-    const res = await api.put(`menus/${menuId}/categories/${categoryId}` {category: categoryData})
+    const res = await api.put(`menus/${menuId}/categories/${categoryId}`, {category: categoryData})
     return res.data
     } catch(e) {
         throw e;
