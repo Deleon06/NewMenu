@@ -68,45 +68,15 @@ src
       |__ SignUp/
             |__ SignUp.jsx
             |__ SignUp.css
-      |__ CreateMenuFeatures/
-            |__ CreateMenuFeatures.jsx
-            |__ CreateMenuFeatures.css
-      |__ BreakfastMenuOptions/
-            |__ BreakfastMenuOptions.jsx
-            |__ BreakfastMenuOptions.css
-      |__ LunchMenuOptions/
-            |__ LunchMenuOptions.jsx
-            |__ LunchMenuOptions.css
-      |__ DinnerMenuOptions/
-             |__ DinnerMenuOptions.jsx
-             |__ DinnerMenuOptions.css
-      |__ CocktailsMenuOptions/
-            |__ CocktailsMenuOptions.jsx
-            |__ CocktailsMenuOptions.css
-      |__ BeersMenuOptions/
-            |__ BeersMenuOptions.jsx
-            |__ BeersMenuOptions.css
-      |__ WinesMenuOptions/
-            |__ WinesMenuOptions.jsx
-            |__ WinesMenuOptions.css
-      |__ AddtoBreakfast/
-            |__ AddtoBreakfast.jsx
-            |__ AddtoBreakfast.css
-      |__ AddtoLunch/
-            |__ AddtoLunch.jsx
-            |__ AddtoLunch.css
-      |__ AddtoDinner/
-            |__ AddtoDinner.jsx
-            |__ AddtoDinner.css
-      |__ AddtoCocktails/
-            |__ AddtoCocktails.jsx
-            |__ AddtoCocktails.css
-      |__ AddtoBeers/
-             |__ AddtoBeers.jsx
-             |__ AddtoBeers.css
-      |__ AddtoWines/
-            |__ AddtoWines.jsx
-            |__ AddtoWines.css
+      |__ CreateMenu/
+            |__ CreateMenu.jsx
+            |__ CreateMenu.css
+      |__ AddToMenu/
+            |__ AddToMenu.jsx
+            |__ AddToMenu.css
+      |__ AddToCategories/
+            |__ AddToCategories.jsx
+            |__ AddToCategories.css
       |__UnfinidedMenuList/
             |__UnfinidedMenuList.jsx
             |__UnfinidedMenuList.css
