@@ -31,13 +31,14 @@ function App() {
   const handleRegister = async(registerData) => {
     const userData = await registerUser(registerData)
     setCurrentUser(userData)
-    history.push('/')
+    history.push('/show')
   }
 
   const handleSignOut = () => {
     setCurrentUser(null)
     localStorage.removeItem('authToken')
     removeToken()
+    history.push('/')
   }
 
 
