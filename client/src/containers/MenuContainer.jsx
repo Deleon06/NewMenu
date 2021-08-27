@@ -49,7 +49,7 @@ export default function MenuContainer() {
                 <div className="menuName">
                     {item.name}
                     <br />
-                    Price: {item.price}
+                    Price: ${item.price}
                 </div>
             ))}
         </div>
