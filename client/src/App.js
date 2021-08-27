@@ -20,7 +20,7 @@ function App() {
       setCurrentUser(userData)
     }
     handleVerify()
-  })
+  }, [])
 
   const handleSignIn = async(signInData) => {
     const userData = await signInUser(signInData)

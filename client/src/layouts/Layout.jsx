@@ -19,7 +19,7 @@ export default function Layout(props) {
                 <div>
                     <Link to="/completedmenus">Completed Menu</Link>
                     <Link to="menus">Menu List</Link>
-                    <Link to="/show" onClick={handleSignOut}>Sign Out</Link>
+                    <Link to="/" onClick={handleSignOut}>Sign Out</Link>
                 </div>
             )}
             {props.children}
