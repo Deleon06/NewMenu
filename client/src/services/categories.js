@@ -9,7 +9,6 @@ export const getAllCategories = async () => {
     }
 }
 
-
 export const addCategoryToMenu = async (menuId, categoryData) => {
     try {
     const res = await api.post(`menus/${menuId}/categories`, {category: categoryData})

@@ -3,35 +3,49 @@ import { getAllCategories } from "../services/categories"
 import { getAllItems } from "../services/items"
 import { getAllMenus } from '../services/menus'
 
-export default function MenuContainer() {
+export default function MenuContainer(props) {
 
     const [menus, setMenus] = useState([])
     const [categories, setCategories] = useState([])
     const [items, setItems] = useState([])
+    console.log(menus)
 
+    
+
+    
     useEffect(() => {
+        if (props.id === menus.user_id) {
+
         const getMenus = async () => {
             const menuList = await getAllMenus()
+            console.log(menuList)
             setMenus(menuList)
         }
         getMenus()
-    }, [])
+       
+        if (menus.id === categories.menu_id) {
 
-    useEffect(() => {
-        const getCategories = async () => {
-            const categoryList = await getAllCategories()
-            setCategories(categoryList)
+            const getCategories = async () => {
+                const categoryList = await getAllCategories()
+                console.log(categoryList)
+                setCategories(categoryList)
         }
         getCategories()
-    }, [])
+        }
 
-    useEffect(() => {
-        const getItems = async () => {
-            const categoryList = await getAllItems()
-            setItems(categoryList)
+        if (categories.id === items.categories_id) {
+            const getItems = async () => {
+                const itemsList = await getAllItems()
+                console.log(items)
+                setItems(itemsList)
         }
         getItems()
+        }
+
+        }
     }, [])
+    
+    
 
     return (
         <div> 

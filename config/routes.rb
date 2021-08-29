@@ -7,6 +7,5 @@ Rails.application.routes.draw do
   resources :users, only: :create
   get '/menus/:menu_id/categeries/:id', to: 'categories#add_to_food'
   get '/categories/:category_id/items/:id', to: 'items#add_to_category'
-  get '/menus', to: 'menus#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

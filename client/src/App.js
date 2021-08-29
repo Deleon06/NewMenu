@@ -8,10 +8,17 @@ import { registerUser, removeToken, signInUser, verifyUser } from './services/au
 import Register from './views/SignIn/Register';
 import MainContainer from './containers/MainContainer';
 import MenuContainer from './containers/MenuContainer';
+import { getAllCategories } from "./services/categories"
+import { getAllItems } from "./services/items"
+import { getAllMenus } from './services/menus'
+import CreateMenu from './views/SignIn/CreateMenu';
 
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
+  const [menus, setMenus] = useState([])
+  const [categories, setCategories] = useState([])
+  const [items, setItems] = useState([])
   const history = useHistory()
 
   useEffect(() =>{
@@ -41,6 +48,31 @@ function App() {
     history.push('/')
   }
 
+  useEffect(() => {
+
+    const getMenus = async () => {
+        const menuList = await getAllMenus()
+        console.log(menuList)
+        setMenus(menuList)
+    }
+    getMenus()
+  
+    const getCategories = async () => {
+        const categoryList = await getAllCategories()
+        console.log(categoryList)
+        setCategories(categoryList)
+    }
+    getCategories()
+    
+    const getItems = async () => {
+        const itemsList = await getAllItems()
+        console.log(items)
+        setItems(itemsList)
+    }
+    getItems()
+  
+}, [])
+
 
   return (
     <div className="App">
@@ -49,16 +81,18 @@ function App() {
           <Route path ='/SignIn'>
             <SignIn handleSignIn={handleSignIn}/>
           </Route>
+          <Route path='/create'>
+            <CreateMenu />
+          </Route>
           <Route path='/register'>
             <Register handleRegister={handleRegister}/>
           </Route>
           <Route path='/show'>
-            <MenuContainer />
+            <MenuContainer currentUser ={currentUser}/>
           </Route>
           <Route path='/'>
              <MainContainer />
           </Route>
-  
         </Switch>
       </Layout>
     </div>
