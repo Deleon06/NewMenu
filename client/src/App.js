@@ -1,17 +1,17 @@
 import './App.css';
 import './layouts/Layout'
 import Layout from './layouts/Layout';
-import SignIn from './views/SignIn/SignIn';
+import SignIn from './views/SignIn';
 import {Switch, Route, useHistory} from 'react-router-dom'
 import {useState, useEffect} from 'react'
 import { registerUser, removeToken, signInUser, verifyUser } from './services/auth';
-import Register from './views/SignIn/Register';
+import Register from './views/Register';
 import MainContainer from './containers/MainContainer';
 import MenuContainer from './containers/MenuContainer';
-import { getAllCategories } from "./services/categories"
+import { addCategoryToMenu, getAllCategories } from "./services/categories"
 import { getAllItems } from "./services/items"
-import { getAllMenus } from './services/menus'
-import CreateMenu from './views/SignIn/CreateMenu';
+import { addMenu, getAllMenus } from './services/menus'
+import CreateMenu from './views/CreateMenu';
 
 
 function App() {
@@ -19,6 +19,7 @@ function App() {
   const [menus, setMenus] = useState([])
   const [categories, setCategories] = useState([])
   const [items, setItems] = useState([])
+  const [menuId, setMenuId] = useState()
   const history = useHistory()
 
   useEffect(() =>{
@@ -48,30 +49,18 @@ function App() {
     history.push('/')
   }
 
-  useEffect(() => {
+  const handleCreateMenu = async (menuName) => {
+    const menuData = await addMenu(menuName);
+    setMenus((prevState) => [...prevState, menuData]);
+    setMenuId(menuData.id)
+    // history.push('/show');
+  };
 
-    const getMenus = async () => {
-        const menuList = await getAllMenus()
-        console.log(menuList)
-        setMenus(menuList)
-    }
-    getMenus()
-  
-    const getCategories = async () => {
-        const categoryList = await getAllCategories()
-        console.log(categoryList)
-        setCategories(categoryList)
-    }
-    getCategories()
-    
-    const getItems = async () => {
-        const itemsList = await getAllItems()
-        console.log(items)
-        setItems(itemsList)
-    }
-    getItems()
-  
-}, [])
+  const handleCreateCategory = async (menuId, categoryName) => {
+    const categoryData = await addCategoryToMenu(menuId, categoryName);
+    setCategories((prevState) => [...prevState, categoryData]);
+    // history.push('/show');
+  };
 
 
   return (
@@ -82,7 +71,7 @@ function App() {
             <SignIn handleSignIn={handleSignIn}/>
           </Route>
           <Route path='/create'>
-            <CreateMenu />
+            <CreateMenu handleCreateMenu ={handleCreateMenu} handleCreateCategory={handleCreateCategory} menuId ={menuId}/>
           </Route>
           <Route path='/register'>
             <Register handleRegister={handleRegister}/>
