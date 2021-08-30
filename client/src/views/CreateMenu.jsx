@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { getOneMenu } from '../services/menus'
 
 export default function CreateMenu(props) {
     const [menuFormData, setMenuFormData] = useState({
@@ -9,13 +10,12 @@ export default function CreateMenu(props) {
         menu_id: 0,
     })
     const [toggle, setToggle] = useState(false)
- 
     const {menuName} = menuFormData
     const {categoryName} = categoryFormData
-
     const handleCreateMenu = props.handleCreateMenu
     const handleCreateCategory = props.handleCreateCategory
-    // console.log(props.menu_Id)
+    const [menuInfo, setMenuInfo] = useState({})
+   
     const handleMenuChange = (e) =>{
         
         const { name, value } = e.target;
@@ -34,7 +34,14 @@ export default function CreateMenu(props) {
         }));
       };
 
-      
+      useEffect(() => {
+        const oneMenuData = async () => {
+            const menuInfo = await getOneMenu(categoryFormData.menu_id)
+            setMenuInfo(menuInfo)
+        }
+        oneMenuData()
+    
+    }, [props])
 
     return (
         <div>
@@ -68,7 +75,8 @@ export default function CreateMenu(props) {
             
             <form onSubmit={(e) => {
                 e.preventDefault(e)
-                handleCreateCategory(categoryFormData)}}
+                handleCreateCategory(categoryFormData)
+               }}
                 >
                 <label>
                     category
@@ -83,7 +91,15 @@ export default function CreateMenu(props) {
                 </label>
                 <button>add</button>
             </form>
-
+                    {
+                    menuInfo.categories.map((categories) => (
+                        <div>{categories.name}
+                            <button>edit</button>
+                            <button>delete</button>
+                        </div>
+                    ))
+                    }
+        <hr/>
             <button>Continue</button>
         </div>
     )
