@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2021_08_26_172025) do
     t.bigint "menu_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["menu_id"], name: "index_categories_on_menu_id"
+    # t.index ["menu_id"], name: "index_categories_on_menu_id"
   end
 
   create_table "items", force: :cascade do |t|

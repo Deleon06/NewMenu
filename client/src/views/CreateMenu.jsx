@@ -5,8 +5,8 @@ export default function CreateMenu(props) {
         name: '',
     })
     const [categoryFormData, setCategoryFormData] = useState({
-        menuId: 0,
         name: '',
+        menu_id: 0,
     })
     const [toggle, setToggle] = useState(false)
  
@@ -15,7 +15,7 @@ export default function CreateMenu(props) {
 
     const handleCreateMenu = props.handleCreateMenu
     const handleCreateCategory = props.handleCreateCategory
-    // console.log(props.menuId)
+    // console.log(props.menu_Id)
     const handleMenuChange = (e) =>{
         
         const { name, value } = e.target;
@@ -29,7 +29,7 @@ export default function CreateMenu(props) {
         const { name, value } = e.target;
         setCategoryFormData((prevState) => ({
           ...prevState,
-          menuId: props.menuId,
+          menu_id: props.menuData.id,
           [name]: value,
         }));
       };
@@ -75,14 +75,13 @@ export default function CreateMenu(props) {
                     <input
                         type="text"
                         placeholder="sandwiches"
-                        menuId = 'menuId'
+                        menu_Id = 'menu_Id'
                         name = 'name'
                         value={categoryName}
                         onChange={handleCategoryChange}
                     />
                 </label>
                 <button>add</button>
-                <button>edit</button>
             </form>
 
             <button>Continue</button>

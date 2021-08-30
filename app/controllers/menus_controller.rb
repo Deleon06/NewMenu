@@ -42,9 +42,9 @@ class MenusController < ApplicationController
 
   def add_to_user
     @user = User.find(params[:user_id])
-    @muser.categories << @menu
+    @user.menu << @menu
 
-    render json: @user, include: :menus    
+    render json: @menu, include: :categories    
   end
 
   private

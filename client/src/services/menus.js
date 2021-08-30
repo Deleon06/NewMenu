@@ -29,6 +29,7 @@ export const getOneMenu = async (id) => {
 
 export const addMenu = async (menuData) => {
     try {
+    console.log(menuData)
     const res = await api.post('/menus', {menu: menuData})
     return res.data
     } catch(e) {

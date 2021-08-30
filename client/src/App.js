@@ -8,9 +8,8 @@ import { registerUser, removeToken, signInUser, verifyUser } from './services/au
 import Register from './views/Register';
 import MainContainer from './containers/MainContainer';
 import MenuContainer from './containers/MenuContainer';
-import { addCategoryToMenu, getAllCategories } from "./services/categories"
-import { getAllItems } from "./services/items"
-import { addMenu, getAllMenus } from './services/menus'
+import { addCategoryToMenu } from "./services/categories"
+import { addMenu } from './services/menus'
 import CreateMenu from './views/CreateMenu';
 
 
@@ -19,7 +18,7 @@ function App() {
   const [menus, setMenus] = useState([])
   const [categories, setCategories] = useState([])
   const [items, setItems] = useState([])
-  const [menuId, setMenuId] = useState()
+  const [menuData, setMenuData] = useState()
   const history = useHistory()
 
   useEffect(() =>{
@@ -52,12 +51,13 @@ function App() {
   const handleCreateMenu = async (menuName) => {
     const menuData = await addMenu(menuName);
     setMenus((prevState) => [...prevState, menuData]);
-    setMenuId(menuData.id)
+    setMenuData(menuData)
     // history.push('/show');
   };
 
-  const handleCreateCategory = async (menuId, categoryName) => {
-    const categoryData = await addCategoryToMenu(menuId, categoryName);
+  const handleCreateCategory = async (categoryName) => {
+    console.log(categoryName)
+    const categoryData = await addCategoryToMenu(categoryName);
     setCategories((prevState) => [...prevState, categoryData]);
     // history.push('/show');
   };
@@ -71,7 +71,7 @@ function App() {
             <SignIn handleSignIn={handleSignIn}/>
           </Route>
           <Route path='/create'>
-            <CreateMenu handleCreateMenu ={handleCreateMenu} handleCreateCategory={handleCreateCategory} menuId ={menuId}/>
+            <CreateMenu handleCreateMenu ={handleCreateMenu} handleCreateCategory={handleCreateCategory} menuData ={menuData}/>
           </Route>
           <Route path='/register'>
             <Register handleRegister={handleRegister}/>
