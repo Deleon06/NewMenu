@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react'
-import { deleteCategory} from '../services/categories'
-import { getOneMenu, putMenu } from '../services/menus'
-import { useHistory } from 'react-router'
+import { useState} from 'react'
+import { putCategory } from '../services/categories'
+import { putMenu } from '../services/menus'
+
 
 export default function CreateMenu(props) {
     
@@ -13,15 +13,20 @@ export default function CreateMenu(props) {
         menu_id: 0,
     })
 
+    const [editCategoryForm, setEditCategoryForm] = useState({
+        categoryName: '',
+        categoryId: 0,
+    })
+
     const [menuToggle, setMenuToggle] = useState(false)
     const [editToggle, setEditToggle] = useState(false)
+    const [categoryEditToggle, setCategoryEditToggle] = useState(false)
     const {name} = menuFormData
-    const {categoryName} = categoryFormData
+    const {categoryName} = editCategoryForm
     const handleCreateMenu = props.handleCreateMenu
-    const handleEdit = props.handleEdit
     const handleCreateCategory = props.handleCreateCategory
+    const handleDeleteCategory = props.handleDeleteCategory
     const menuData = props.menuData
-    const history = useHistory()
    
     const handleMenuChange = (e) =>{
         const { name, value } = e.target;
@@ -33,6 +38,7 @@ export default function CreateMenu(props) {
 
       const handleCategoryChange = (e) =>{
         const { name, value } = e.target;
+        console.log(categoryName)
         setCategoryFormData((prevState) => ({
           ...prevState,
           menu_id: props.menuData.id,
@@ -40,15 +46,15 @@ export default function CreateMenu(props) {
         }));
       };
 
-    const handleDeleteCategory = async(e) => {
-        e.preventDefault()
-        await deleteCategory(e.target.value);
-        history.push('/create')
+    const handleEditMenu = async(menuFormData) => {
+        console.log(props.menuData.id, menuFormData)
+        await putMenu(props.menuData.id, menuFormData)
     }
 
-    const handleEditMenu = async(menuFormData) => {
-        console.log(props.menuData.id, menuFormData.name)
-        await putMenu(props.menuData.id, menuFormData)
+    const handleEditCategory = async(editCategoryForm) => {
+        console.log({name: categoryName}, editCategoryForm)
+        
+        await putCategory({name: categoryName}, editCategoryForm.categoryId)
     }
 
    
@@ -86,7 +92,6 @@ export default function CreateMenu(props) {
                 ) : (
                     <form onSubmit={(e) => {
                         e.preventDefault();
-                           console.log(menuFormData)
                         handleCreateMenu(menuFormData)
                         setMenuToggle(true)
                         }}
@@ -107,8 +112,9 @@ export default function CreateMenu(props) {
             }
             
             <form onSubmit={(e) => {
-                e.preventDefault(e)
+                e.preventDefault()
                 handleCreateCategory(categoryFormData)
+                e.target[0].value = ''
                }}
                 >
                 <label>
@@ -118,7 +124,6 @@ export default function CreateMenu(props) {
                         placeholder="sandwiches"
                         menu_Id = 'menu_Id'
                         name = 'name'
-                        value={categoryName}
                         onChange={handleCategoryChange}
                     />
                 </label>
@@ -127,11 +132,36 @@ export default function CreateMenu(props) {
                <h3>Categories</h3>
                     {menuData ? (
                          menuData.categories.map((category) => (
-                            <div>{category.name}
-                                <button value={category.id} onClick={handleEdit}>edit</button>
-                                <button value={category.id} onClick={handleDeleteCategory}>delete</button>
-                            </div>
-                        )) 
+                          
+                           <>
+                                { categoryEditToggle ? (
+                                <form onSubmit={(e) => {
+                                    e.preventDefault();
+                                    handleEditCategory(editCategoryForm)
+                                    setCategoryEditToggle(false)
+                                    }}>
+                                    <lable>{category.name}</lable>
+                                    <br/>
+                                    <input 
+                                    type='text'
+                                    categoryName='categoryName'
+                                    id= {category.id}
+                                    value={categoryName}
+                                    onChange={(e) => setEditCategoryForm({categoryName: e.target.value, categoryId: category.id})}
+                                    />
+                                    <button>confirm</button>
+                                </form>
+                                ) : (
+                                <div id={category.id}>
+                                    <div>{category.name}</div>
+                                    <button value={category.id} onClick={()=> setCategoryEditToggle(true)}>edit</button>
+                                    <button value={category.id} onClick={handleDeleteCategory}>delete</button>
+                                </div>
+                                )
+                            }
+                                
+                         
+                        </>)) 
                     ) : (
                         <>
                         </>
@@ -139,6 +169,6 @@ export default function CreateMenu(props) {
                       }
         <hr/>
             <button>Continue</button>
-        </div>
+     </div>
     )
 }

@@ -28,7 +28,7 @@ class CategoriesController < ApplicationController
   # PATCH/PUT /categories/1
   def update
     if @category.update(category_params)
-      render json: @category
+      render json: @category, include: :items
     else
       render json: @category.errors, status: :unprocessable_entity
     end
@@ -43,7 +43,7 @@ class CategoriesController < ApplicationController
     @menu = Menu.find(params[:menu_id])
     @menu.categories << @category
 
-    render json: @menu, include: :categories    
+    render json: @menu, include: :items
   end
 
   private
