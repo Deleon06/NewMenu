@@ -69,6 +69,17 @@ function App() {
     }))
     }
 
+  const handleEditCategory = async(categoryName, editCategoryForm) => {
+      const updatedCategory = await putCategory({name: categoryName}, editCategoryForm.categoryId)
+      menuData.categories = menuData.categories.map(category => {
+        return category.id === updatedCategory.id ? updatedCategory : category
+      })
+      setMenuData(prevState => ({
+        ...prevState,
+        categories: [...prevState.categories]
+      }))
+  }
+
 
 
   return (
@@ -86,6 +97,7 @@ function App() {
             handleCreateMenu ={handleCreateMenu} 
             handleCreateCategory={handleCreateCategory} 
             handleDeleteCategory={handleDeleteCategory}
+            handleEditCategory={handleEditCategory}
             menuData ={menuData} 
             />
           </Route>

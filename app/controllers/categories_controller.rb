@@ -19,7 +19,7 @@ class CategoriesController < ApplicationController
     # @category.menu = @menu
 
     if @category.save
-      render json: @category, status: :created
+      render json: @category, include: :items, status: :created
     else
       render json: @category.errors, status: :unprocessable_entity
     end

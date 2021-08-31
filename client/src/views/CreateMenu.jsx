@@ -26,6 +26,7 @@ export default function CreateMenu(props) {
     const handleCreateMenu = props.handleCreateMenu
     const handleCreateCategory = props.handleCreateCategory
     const handleDeleteCategory = props.handleDeleteCategory
+    const handleEditCategory= props.handleEditCategory
     const menuData = props.menuData
    
     const handleMenuChange = (e) =>{
@@ -47,14 +48,7 @@ export default function CreateMenu(props) {
       };
 
     const handleEditMenu = async(menuFormData) => {
-        console.log(props.menuData.id, menuFormData)
         await putMenu(props.menuData.id, menuFormData)
-    }
-
-    const handleEditCategory = async(editCategoryForm) => {
-        console.log({name: categoryName}, editCategoryForm)
-        
-        await putCategory({name: categoryName}, editCategoryForm.categoryId)
     }
 
    
@@ -130,6 +124,7 @@ export default function CreateMenu(props) {
                 <button>add</button>
             </form>
                <h3>Categories</h3>
+                {console.log(menuData)}
                     {menuData ? (
                          menuData.categories.map((category) => (
                           
@@ -137,7 +132,7 @@ export default function CreateMenu(props) {
                                 { categoryEditToggle ? (
                                 <form onSubmit={(e) => {
                                     e.preventDefault();
-                                    handleEditCategory(editCategoryForm)
+                                    handleEditCategory(categoryName, editCategoryForm)
                                     setCategoryEditToggle(false)
                                     }}>
                                     <lable>{category.name}</lable>
