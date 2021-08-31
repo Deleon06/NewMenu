@@ -1,5 +1,4 @@
 import { useState} from 'react'
-import { putCategory } from '../services/categories'
 import { putMenu } from '../services/menus'
 
 
