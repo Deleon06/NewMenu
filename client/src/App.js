@@ -7,9 +7,10 @@ import {useState, useEffect} from 'react'
 import { registerUser, removeToken, signInUser, verifyUser } from './services/auth';
 import Register from './views/Register';
 import MainContainer from './containers/MainContainer';
-import { addCategoryToMenu, putCategory } from "./services/categories"
+import { addCategoryToMenu, deleteCategory, putCategory } from "./services/categories"
 import { addMenu, putMenu } from './services/menus'
 import CreateMenu from './views/CreateMenu';
+import CreateItem from './views/CreateItem';
 
 
 function App() {
@@ -50,18 +51,6 @@ function App() {
     // history.push('/show');
   };
 
-  const handleEditMenu = async (menuName) => {
-    console.log(menuName)
-    const menuData = await putMenu(menuName.id, menuName.name);
-    setMenuData(menuData)
-    // history.push('/show');
-  };
-
-  const handleEditCategory = async (categoryName) => {
-    console.log(categoryName)
-    await putCategory(categoryName)
-  }
-
   const handleCreateCategory = async (categoryFormData) => {
     const newCategory = await addCategoryToMenu(categoryFormData);
     setMenuData(prevState => ({
@@ -70,6 +59,26 @@ function App() {
     }))
   };
 
+  const handleDeleteCategory = async (id) => {
+    console.log(id.target.value)
+    await deleteCategory(id.target.value)
+    menuData.categories = menuData.categories.filter(categories => categories.id != id.target.value)
+    setMenuData(prevState => ({
+      ...prevState,
+      categories: [...prevState.categories]
+    }))
+    }
+
+  const handleEditCategory = async(categoryName, editCategoryForm) => {
+      const updatedCategory = await putCategory({name: categoryName}, editCategoryForm.categoryId)
+      menuData.categories = menuData.categories.map(category => {
+        return category.id === updatedCategory.id ? updatedCategory : category
+      })
+      setMenuData(prevState => ({
+        ...prevState,
+        categories: [...prevState.categories]
+      }))
+  }
 
 
 
@@ -77,6 +86,9 @@ function App() {
     <div className="App">
       <Layout currentUser ={currentUser} handleSignOut={handleSignOut}>
         <Switch>
+          <Route path ='/create/:id'>
+            <CreateItem />
+          </Route>
           <Route path ='/SignIn'>
             <SignIn handleSignIn={handleSignIn}/>
           </Route>
@@ -84,9 +96,9 @@ function App() {
             <CreateMenu 
             handleCreateMenu ={handleCreateMenu} 
             handleCreateCategory={handleCreateCategory} 
-            menuData ={menuData} 
-            handleEditMenu={handleEditMenu}
+            handleDeleteCategory={handleDeleteCategory}
             handleEditCategory={handleEditCategory}
+            menuData ={menuData} 
             />
           </Route>
           <Route path='/register'>
