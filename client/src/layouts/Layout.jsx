@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import './Layout.css'
 
 export default function Layout(props) {
     const {currentUser, handleSignOut} = props;
@@ -17,15 +18,15 @@ export default function Layout(props) {
                     </div>
                 )
             }
-            <hr />
             {currentUser && (
-                <div>
-                    <Link to="/create">Create a New Menu</Link>
-                    <Link to="/completedmenus">Completed Menu</Link>
-                    <Link to="menus">Menu List</Link>
-                    <Link to="/" onClick={handleSignOut}>Sign Out</Link>
+                <div id="navBar">
+                    <Link to="/create" class="navItem">Create a New Menu</Link>
+                    <Link to="/completedmenus" class="navItem">Completed Menu</Link>
+                    <Link to="menus" class="navItem">Menu List</Link>
+                    <Link to="/" onClick={handleSignOut} class="navItem">Sign Out</Link>
                 </div>
             )}
+             <hr />
             {props.children}
         </header>
     )

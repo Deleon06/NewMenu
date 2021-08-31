@@ -1,3 +1,28 @@
 .App {
   text-align: center;
+  background-color: #EFE2BA;
+  height: auto;
+  margin: 0;
+  text-decoration: none;
+  color: #4056A1
+}
+
+a:link {
+  text-decoration: none;
+  color: #4056A1
+}
+
+a:visited {
+  text-decoration: none;
+  color: #4056A1
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #4056A1
+}
+
+a:active {
+  text-decoration: underline;
+  color: #4056A1
 }

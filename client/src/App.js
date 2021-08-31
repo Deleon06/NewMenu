@@ -7,18 +7,14 @@ import {useState, useEffect} from 'react'
 import { registerUser, removeToken, signInUser, verifyUser } from './services/auth';
 import Register from './views/Register';
 import MainContainer from './containers/MainContainer';
-import MenuContainer from './containers/MenuContainer';
-import { addCategoryToMenu } from "./services/categories"
-import { addMenu } from './services/menus'
+import { addCategoryToMenu, putCategory } from "./services/categories"
+import { addMenu, putMenu } from './services/menus'
 import CreateMenu from './views/CreateMenu';
 
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
-  const [menus, setMenus] = useState([])
-  const [categories, setCategories] = useState([])
-  const [items, setItems] = useState([])
-  const [menuData, setMenuData] = useState()
+  const [menuData, setMenuData] = useState(null)
   const history = useHistory()
 
   useEffect(() =>{
@@ -50,17 +46,31 @@ function App() {
 
   const handleCreateMenu = async (menuName) => {
     const menuData = await addMenu(menuName);
-    setMenus((prevState) => [...prevState, menuData]);
     setMenuData(menuData)
     // history.push('/show');
   };
 
-  const handleCreateCategory = async (categoryName) => {
-    console.log(categoryName)
-    const categoryData = await addCategoryToMenu(categoryName);
-    setCategories((prevState) => [...prevState, categoryData]);
+  const handleEditMenu = async (menuName) => {
+    console.log(menuName)
+    const menuData = await putMenu(menuName.id, menuName.name);
+    setMenuData(menuData)
     // history.push('/show');
   };
+
+  const handleEditCategory = async (categoryName) => {
+    console.log(categoryName)
+    await putCategory(categoryName)
+  }
+
+  const handleCreateCategory = async (categoryFormData) => {
+    const newCategory = await addCategoryToMenu(categoryFormData);
+    setMenuData(prevState => ({
+      ...prevState,
+      categories: [...prevState.categories, newCategory]
+    }))
+  };
+
+
 
 
   return (
@@ -71,13 +81,16 @@ function App() {
             <SignIn handleSignIn={handleSignIn}/>
           </Route>
           <Route path='/create'>
-            <CreateMenu handleCreateMenu ={handleCreateMenu} handleCreateCategory={handleCreateCategory} menuData ={menuData}/>
+            <CreateMenu 
+            handleCreateMenu ={handleCreateMenu} 
+            handleCreateCategory={handleCreateCategory} 
+            menuData ={menuData} 
+            handleEditMenu={handleEditMenu}
+            handleEditCategory={handleEditCategory}
+            />
           </Route>
           <Route path='/register'>
             <Register handleRegister={handleRegister}/>
-          </Route>
-          <Route path='/show'>
-            <MenuContainer currentUser ={currentUser}/>
           </Route>
           <Route path='/'>
              <MainContainer />

@@ -1,0 +1,8 @@
+#navBar{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.navItem{
+    padding: 10px
+}

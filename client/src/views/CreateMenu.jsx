@@ -1,7 +1,10 @@
 import { useState, useEffect } from 'react'
-import { getOneMenu } from '../services/menus'
+import { deleteCategory} from '../services/categories'
+import { getOneMenu, putMenu } from '../services/menus'
+import { useHistory } from 'react-router'
 
 export default function CreateMenu(props) {
+    
     const [menuFormData, setMenuFormData] = useState({
         name: '',
     })
@@ -9,15 +12,18 @@ export default function CreateMenu(props) {
         name: '',
         menu_id: 0,
     })
-    const [toggle, setToggle] = useState(false)
-    const {menuName} = menuFormData
+
+    const [menuToggle, setMenuToggle] = useState(false)
+    const [editToggle, setEditToggle] = useState(false)
+    const {name} = menuFormData
     const {categoryName} = categoryFormData
     const handleCreateMenu = props.handleCreateMenu
+    const handleEdit = props.handleEdit
     const handleCreateCategory = props.handleCreateCategory
-    const [menuInfo, setMenuInfo] = useState({})
+    const menuData = props.menuData
+    const history = useHistory()
    
     const handleMenuChange = (e) =>{
-        
         const { name, value } = e.target;
         setMenuFormData((prevState) => ({
           ...prevState,
@@ -34,28 +40,55 @@ export default function CreateMenu(props) {
         }));
       };
 
-      useEffect(() => {
-        const oneMenuData = async () => {
-            const menuInfo = await getOneMenu(categoryFormData.menu_id)
-            setMenuInfo(menuInfo)
-        }
-        oneMenuData()
-    
-    }, [props])
+    const handleDeleteCategory = async(e) => {
+        e.preventDefault()
+        await deleteCategory(e.target.value);
+        history.push('/create')
+    }
+
+    const handleEditMenu = async(menuFormData) => {
+        console.log(props.menuData.id, menuFormData.name)
+        await putMenu(props.menuData.id, menuFormData)
+    }
+
+   
 
     return (
-        <div>
+        <div className="createCategoryContainer">
             {
-                toggle ? (
+                menuToggle ? (
                     <>
-                    <div>{menuFormData.name} </div>
-                    <button>edit</button>
+                        { editToggle ? 
+                            (
+                                <>
+                                <form onSubmit={(e) => {
+                                    e.preventDefault();
+                                    handleEditMenu(menuFormData)
+                                    setEditToggle(false)
+                                    }}
+                                    >
+                                    <input
+                                        type="text"
+                                        name= 'name'
+                                        value={name}
+                                        onChange={handleMenuChange}
+                                    />
+                                    <button>Confirm</button>
+                                    </form>
+                                </>
+                                
+                            )
+                        : (<div>{menuFormData.name} 
+                            <button onClick={() => setEditToggle(true)}>edit</button>
+                            </div>
+                            )}
                     </>
                 ) : (
                     <form onSubmit={(e) => {
                         e.preventDefault();
+                           console.log(menuFormData)
                         handleCreateMenu(menuFormData)
-                        setToggle(true)
+                        setMenuToggle(true)
                         }}
                         >
                         <label>
@@ -64,7 +97,7 @@ export default function CreateMenu(props) {
                                 type="text"
                                 placeholder="My Restaurants Lunch Menu"
                                 name = 'name'
-                                value= {menuName}
+                                value= {menuFormData.name}
                                 onChange={handleMenuChange}
                             />
                         </label>
@@ -91,14 +124,19 @@ export default function CreateMenu(props) {
                 </label>
                 <button>add</button>
             </form>
-                    {
-                    menuInfo.categories.map((categories) => (
-                        <div>{categories.name}
-                            <button>edit</button>
-                            <button>delete</button>
-                        </div>
-                    ))
-                    }
+               <h3>Categories</h3>
+                    {menuData ? (
+                         menuData.categories.map((category) => (
+                            <div>{category.name}
+                                <button value={category.id} onClick={handleEdit}>edit</button>
+                                <button value={category.id} onClick={handleDeleteCategory}>delete</button>
+                            </div>
+                        )) 
+                    ) : (
+                        <>
+                        </>
+               )
+                      }
         <hr/>
             <button>Continue</button>
         </div>

@@ -12,7 +12,6 @@ export const getAllCategories = async () => {
 
 export const addCategoryToMenu = async (categoryData) => {
     try {
-    console.log(categoryData)
     const res = await api.post(`/categories`, {category: (categoryData)})
     return res.data
     } catch(e) {
@@ -20,18 +19,18 @@ export const addCategoryToMenu = async (categoryData) => {
     }
 }
 
-export const putCategory = async(menuId,categoryId,categoryData) => {
+export const putCategory = async(categoryData, id) => {
     try {
-    const res = await api.put(`/menus/${menuId}/categories/${categoryId}`, {category: categoryData})
+    const res = await api.put(`/categories/${id}`, {category: categoryData})
     return res.data
     } catch(e) {
         throw e;
     }
 }
 
-export const deleteCategory = async(menuId, categoryId) => {
+export const deleteCategory = async(categoryId) => {
     try {
-    const res = await api.delete(`/menus/${menuId}/categories/${categoryId}`)
+    const res = await api.delete(`/categories/${categoryId}`)
     return res
     } catch(e) {
         throw e;
