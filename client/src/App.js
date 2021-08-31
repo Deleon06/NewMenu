@@ -8,7 +8,7 @@ import { registerUser, removeToken, signInUser, verifyUser } from './services/au
 import Register from './views/Register';
 import MainContainer from './containers/MainContainer';
 import { addCategoryToMenu, deleteCategory, putCategory } from "./services/categories"
-import { addMenu, putMenu } from './services/menus'
+import { addMenu} from './services/menus'
 import CreateMenu from './views/CreateMenu';
 import CreateItem from './views/CreateItem';
 
