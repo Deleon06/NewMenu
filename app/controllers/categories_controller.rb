@@ -16,7 +16,7 @@ class CategoriesController < ApplicationController
   # POST /categories
   def create
     @category = Category.new(category_params)
-    @category.user = @current_user
+    # @category.menu = @menu
 
     if @category.save
       render json: @category, status: :created

@@ -1,17 +1,20 @@
 import './App.css';
 import './layouts/Layout'
 import Layout from './layouts/Layout';
-import SignIn from './views/SignIn/SignIn';
+import SignIn from './views/SignIn';
 import {Switch, Route, useHistory} from 'react-router-dom'
 import {useState, useEffect} from 'react'
 import { registerUser, removeToken, signInUser, verifyUser } from './services/auth';
-import Register from './views/SignIn/Register';
+import Register from './views/Register';
 import MainContainer from './containers/MainContainer';
-import MenuContainer from './containers/MenuContainer';
+import { addCategoryToMenu, putCategory } from "./services/categories"
+import { addMenu, putMenu } from './services/menus'
+import CreateMenu from './views/CreateMenu';
 
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
+  const [menuData, setMenuData] = useState(null)
   const history = useHistory()
 
   useEffect(() =>{
@@ -41,6 +44,34 @@ function App() {
     history.push('/')
   }
 
+  const handleCreateMenu = async (menuName) => {
+    const menuData = await addMenu(menuName);
+    setMenuData(menuData)
+    // history.push('/show');
+  };
+
+  const handleEditMenu = async (menuName) => {
+    console.log(menuName)
+    const menuData = await putMenu(menuName.id, menuName.name);
+    setMenuData(menuData)
+    // history.push('/show');
+  };
+
+  const handleEditCategory = async (categoryName) => {
+    console.log(categoryName)
+    await putCategory(categoryName)
+  }
+
+  const handleCreateCategory = async (categoryFormData) => {
+    const newCategory = await addCategoryToMenu(categoryFormData);
+    setMenuData(prevState => ({
+      ...prevState,
+      categories: [...prevState.categories, newCategory]
+    }))
+  };
+
+
+
 
   return (
     <div className="App">
@@ -49,16 +80,21 @@ function App() {
           <Route path ='/SignIn'>
             <SignIn handleSignIn={handleSignIn}/>
           </Route>
+          <Route path='/create'>
+            <CreateMenu 
+            handleCreateMenu ={handleCreateMenu} 
+            handleCreateCategory={handleCreateCategory} 
+            menuData ={menuData} 
+            handleEditMenu={handleEditMenu}
+            handleEditCategory={handleEditCategory}
+            />
+          </Route>
           <Route path='/register'>
             <Register handleRegister={handleRegister}/>
-          </Route>
-          <Route path='/show'>
-            <MenuContainer />
           </Route>
           <Route path='/'>
              <MainContainer />
           </Route>
-  
         </Switch>
       </Layout>
     </div>

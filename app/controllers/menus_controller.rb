@@ -20,7 +20,7 @@ class MenusController < ApplicationController
     @menu.user = @current_user
 
     if @menu.save
-      render json: @menu, status: :created
+      render json: @menu, include: :categories, status: :created
     else
       render json: @menu.errors, status: :unprocessable_entity
     end
@@ -29,7 +29,7 @@ class MenusController < ApplicationController
   # PATCH/PUT /menus/1
   def update
     if @menu.update(menu_params)
-      render json: @menu
+      render json: @menu, include: :categories
     else
       render json: @menu.errors, status: :unprocessable_entity
     end
@@ -38,6 +38,13 @@ class MenusController < ApplicationController
   # DELETE /menus/1
   def destroy
     @menu.destroy
+  end
+
+  def add_to_user
+    @user = User.find(params[:user_id])
+    @user.menu << @menu
+
+    render json: @menu, include: :categories    
   end
 
   private
