@@ -3,6 +3,8 @@
 ## Overview
 A web based application that allows restaurants owner to create random or custom menus for their restaurants.
 
+deployable link https://newmenu.netlify.app
+
 ## MVP
 - Users should be able to sign-in/sign-out
 - able to create Dinner Menu
@@ -18,9 +20,9 @@ A web based application that allows restaurants owner to create random or custom
 |  Day | Deliverable | Status
 |---|---| ---|
 |August 25th| Prompt / Wireframes / Timeframes / Approval | Complete
-|August 26rd| Core Application Structure | Incomplete
-|August 27th| MVP Functionality | Incomplete
-|August 28th| Styling MVP | Incomplete
+|August 26rd| Core Application Structure | Complete
+|August 27th| MVP Functionality | Complete
+|August 28th| Styling MVP | Complete
 |August 29th| PMVP Functionality | Incomplete
 |August 30th| PMVP Styling | Incomplete
 |August 31st| Finishing touches & debugging | Incomplete
@@ -161,7 +163,7 @@ src
 
 ## Post-MVP
 
-- Able to create Breakfast, Lunch, Cocktail, Beers, and Wine Menu
+- Able to create items to category
 - Making a more reactive UI and additional styling
 - Able to render a PDF file for download
 
