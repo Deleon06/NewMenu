@@ -3,40 +3,43 @@ import { useState } from 'react'
 import './ShowingItems.css'
 
 export default function ShowingItems(props) {
-    const [categoryEditToggle, setCategoryEditToggle] = useState(false)
-    // const handleDeleteCategory = props.handleDeleteCategory
-    // const categoryName = props.categoryName
-    // const editCategoryForm = props.editCategoryForm
-
+    const [itemEditToggle, setItemEditToggle] = useState(false)
+    const handleDeleteItem = props.handleDeleteItem
+    const itemName = props.itemName
+    const editItemForm = props.editItemForm
+    console.log(props)
     return (
         <>
-        { categoryEditToggle ?
+        { itemEditToggle ?
         (
             <form onSubmit={(e) => {
                 e.preventDefault();
-                props.handleEditCategory(categoryName, editCategoryForm)
-                setCategoryEditToggle(false)
+                props.handleEditItem(itemName, editItemForm)
+                setItemEditToggle(false)
                 }}>
-                <lable>{props.category.name}</lable>
+                <lable>{props.category.item.name}</lable>
                 <br/>
                 <input 
                 type='text'
-                categoryName='categoryName'
-                id= {props.category.id}
-                value={props.categoryName}
-                onChange={(e) => props.setEditCategoryForm({categoryName: e.target.value, categoryId: props.category.id})}
+                itemName='itemName'
+                id= {props.category.item.id}
+                value={props.itemName}
+                onChange={(e) => props.setEditItemForm({itemName: e.target.value, itemId: props.category.id})}
                 />
                 <br />
-                <button className="DeleteCategoryButton">confirm</button>
+                <button className="DeleteItemButton">confirm</button>
             </form>
         ) : (
-        
+            //<button className="DeleteItemButton" value={props.category.id} onClick={()=> setItemEditToggle(true)}>edit</button>
+        //<button className="DeleteItemButton" value={props.category.id} onClick={handleDeleteItem}>delete</button>
+        //
+        (console.log(props)),
         <div id={props.category.id} key={props.category.id}>
         <div>{props.category.name}
-        <button className="DeleteCategoryButton" value={props.category.id} onClick={()=> setCategoryEditToggle(true)}>edit</button>
-        <button className="DeleteCategoryButton" value={props.category.id} onClick={handleDeleteCategory}>delete</button>
+        
         </div>
         <br />
+    
     </div>
            
         )

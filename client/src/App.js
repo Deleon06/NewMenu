@@ -61,11 +61,16 @@ function App() {
   };
 
   const handleCreateItem = async(itemsFormData) => {
-    console.log(itemsFormData)
     const newItem = await addItemToCategory(itemsFormData);
+    console.log(menuData.categories)
     console.log(newItem)
-    // setMenuData(prevState => ({
-    //   ...prevState,
+    menuData.categories = menuData.categories.map(category => {
+      return category.id === newItem.category_id ? category.items.push(newItem) : category
+      })
+    setMenuData(prevState => ({
+      ...prevState,
+      categories: [...prevState.categories]
+    }))
   }
 
   const handleDeleteCategory = async (id) => {
@@ -117,6 +122,8 @@ function App() {
             <CreateItem 
             menuData ={menuData} 
             handleCreateItem={handleCreateItem}
+            handleDeleteItem={handleDeleteItem}
+            handleEditItem={handleEditItem}
             />
           </Route>
           <Route path ='/SignIn'>

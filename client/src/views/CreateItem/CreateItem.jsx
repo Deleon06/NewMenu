@@ -8,6 +8,8 @@ export default function CreateItem(props) {
     const categories = props.menuData.categories
     const[input, setInput] = useState({category_id: '', name: '', price: 0})
 
+    const handleDeleteItem = props.handleDeleteItem
+    const handleEditItem = props.handleEditItem
     const handleCreateItem = props.handleCreateItem
     const menuData = props.menuData
     const handleChange = (e) => {
@@ -52,7 +54,10 @@ export default function CreateItem(props) {
         {menuData.categories.map((category) => (
         <ShowingItems 
         menuData={menuData}
-        category={category}/>
+        category={category}
+        handleDeleteItem={handleDeleteItem}
+        handleEditItem={handleEditItem}
+        />
         ))
         }          
         </>
