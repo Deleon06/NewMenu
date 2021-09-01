@@ -38,7 +38,6 @@ export default function CreateMenu(props) {
 
       const handleCategoryChange = (e) =>{
         const { name, value } = e.target;
-        console.log(categoryName)
         setCategoryFormData((prevState) => ({
           ...prevState,
           menu_id: props.menuData.id,
@@ -123,7 +122,6 @@ export default function CreateMenu(props) {
                 <button>add</button>
             </form>
                <h3>Categories</h3>
-                {console.log(menuData)}
                     {menuData ? (
                          menuData.categories.map((category) => (
                                     <DeleteCategory 

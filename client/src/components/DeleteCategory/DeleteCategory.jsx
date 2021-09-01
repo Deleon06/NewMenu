@@ -14,7 +14,6 @@ export default function DeleteCategory(props) {
         (
             <form onSubmit={(e) => {
                 e.preventDefault();
-                console.log(editCategoryForm)
                 props.handleEditCategory(categoryName, editCategoryForm)
                 setCategoryEditToggle(false)
                 }}>

@@ -4,11 +4,8 @@ import './CreateItem'
 
 
 export default function CreateItem(props) {
-    console.log(props)
     const categories = props.menuData.categories
-    console.log(categories)
     const[input, setInput] = useState({categoryName: ''})
-    console.log(input)
 
     const handleChange = (e) => {
         const {categoryName, value} = e.target;
