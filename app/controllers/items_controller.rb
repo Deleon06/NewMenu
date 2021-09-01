@@ -16,7 +16,6 @@ class ItemsController < ApplicationController
   # POST /items
   def create
     @item = Item.new(item_params)
-    @item.user = @current_user
 
     if @item.save
       render json: @item, status: :created
@@ -43,7 +42,7 @@ class ItemsController < ApplicationController
     @category = Category.find(params[:category_id])
     @category.items << @item
 
-    render json: @category, include: :items
+    render json: @category
   end
   private
     # Use callbacks to share common setup or constraints between actions.

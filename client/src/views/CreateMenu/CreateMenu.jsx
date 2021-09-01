@@ -2,6 +2,7 @@ import { useState} from 'react'
 import {  Link } from 'react-router-dom'
 import DeleteCategory from '../../components/DeleteCategory/DeleteCategory'
 import { putMenu } from '../../services/menus'
+import './CreateMenu.css'
 
 export default function CreateMenu(props) {
     
@@ -71,12 +72,14 @@ export default function CreateMenu(props) {
                                         value={name}
                                         onChange={handleMenuChange}
                                     />
+                                     <br />
                                     <button>Confirm</button>
                                     </form>
                                 </>
                                 
                             )
                         : (<div>{menuFormData.name} 
+                             <br />
                             <button onClick={() => setEditToggle(true)}>edit</button>
                             </div>
                             )}
@@ -90,14 +93,15 @@ export default function CreateMenu(props) {
                         >
                         <label>
                             Name of Menu
+                            <br />
                             <input
                                 type="text"
-                                placeholder="My Restaurants Lunch Menu"
                                 name = 'name'
                                 value= {menuFormData.name}
                                 onChange={handleMenuChange}
                             />
                         </label>
+                        <br />
                         <button>add</button>
                     </form>
                 )
@@ -110,15 +114,16 @@ export default function CreateMenu(props) {
                }}
                 >
                 <label>
-                    category
+                    Category
+                    <br />
                     <input
                         type="text"
-                        placeholder="sandwiches"
                         menu_Id = 'menu_Id'
                         name = 'name'
                         onChange={handleCategoryChange}
                     />
                 </label>
+                <br />
                 <button>add</button>
             </form>
                <h3>Categories</h3>
@@ -138,10 +143,11 @@ export default function CreateMenu(props) {
                         </>
                )
                       }
-        <hr/>
+        
         <Link to={`/create/${menuFormData.name}`}>
             <button>Continue</button>
         </Link> 
+        <hr/>
      </div>
     )
 }

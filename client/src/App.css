@@ -36,6 +36,31 @@ a:active {
   text-decoration: underline;
   color: #4056A1
 }
+button {
+  background-color: white;
+  color: #4056A1;
+  font-family: "Shadows Into Light", cursive;
+  border: none;
+  border-radius: 80%;
+}
+
+button:hover{
+  cursor: pointer;
+  height: 40px;
+  width: 40px;
+}
+
+input{
+  font-family: "Shadows Into Light", cursive;
+  border-radius: 10%;
+  border: 1px, groove, #4056A1;
+}
+
+select{
+    font-family: "Shadows Into Light", cursive;
+    border-radius: 10%;
+    border: 1px, groove, #4056A1;
+}
 
 @media only screen and (max-width: 768px) {
   p{

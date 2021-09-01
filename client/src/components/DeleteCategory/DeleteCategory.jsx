@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
+import './DeleteCategory.css'
 
 export default function DeleteCategory(props) {
     const [categoryEditToggle, setCategoryEditToggle] = useState(false)
@@ -26,14 +27,17 @@ export default function DeleteCategory(props) {
                 value={props.categoryName}
                 onChange={(e) => props.setEditCategoryForm({categoryName: e.target.value, categoryId: props.category.id})}
                 />
-                <button>confirm</button>
+                <br />
+                <button className="DeleteCategoryButton">confirm</button>
             </form>
         ) : (
         
         <div id={props.category.id} key={props.category.id}>
-        <div>{props.category.name}</div>
-        <button value={props.category.id} onClick={()=> setCategoryEditToggle(true)}>edit</button>
-        <button value={props.category.id} onClick={handleDeleteCategory}>delete</button>
+        <div>{props.category.name}
+        <button className="DeleteCategoryButton" value={props.category.id} onClick={()=> setCategoryEditToggle(true)}>edit</button>
+        <button className="DeleteCategoryButton" value={props.category.id} onClick={handleDeleteCategory}>delete</button>
+        </div>
+        <br />
     </div>
            
         )

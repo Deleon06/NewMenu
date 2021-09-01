@@ -11,6 +11,7 @@ import { addCategoryToMenu, deleteCategory, putCategory } from "./services/categ
 import { addMenu} from './services/menus'
 import CreateMenu from './views/CreateMenu/CreateMenu';
 import CreateItem from './views/CreateItem/CreateItem';
+import { addItemToCategory, deleteItem, putItem } from './services/items';
 
 
 function App() {
@@ -47,6 +48,7 @@ function App() {
 
   const handleCreateMenu = async (menuName) => {
     const menuData = await addMenu(menuName);
+   
     setMenuData(menuData)
   };
 
@@ -57,6 +59,20 @@ function App() {
       categories: [...prevState.categories, newCategory]
     }))
   };
+
+  const handleCreateItem = async(itemsFormData) => {
+    const newItem = await addItemToCategory(itemsFormData);
+    setMenuData(prevState => ({
+      ...prevState,
+      ...prevState.categories.forEach(category =>{
+        console.log(category)
+        console.log(newItem.category_id)
+        if(category.id === newItem.category_id){
+         category.items.push(newItem)
+        }
+      })
+    }))
+  }
 
   const handleDeleteCategory = async (id) => {
     await deleteCategory(id.target.value)
@@ -78,6 +94,40 @@ function App() {
       }))
   }
 
+  const handleDeleteItem = async (id) => {
+    console.log(id.target.id)
+    await deleteItem(parseInt(id.target.id))
+
+   menuData.categories.map(category => 
+    category.items = category.items.filter(item => 
+        item.id !== parseInt(id.target.id)
+    ))
+    setMenuData(prevState => ({
+      ...prevState,
+      categories: [...prevState.categories]
+    }))
+
+    }
+  
+
+ const handleEditItem = async( editItemForm) => {
+      const updatedItem = await putItem({name: editItemForm.name}, editItemForm.item_id)
+      console.log(updatedItem)
+      console.log(menuData)
+      setMenuData(prevState => ({
+        ...prevState,
+        ...prevState.categories.forEach(category =>{
+          console.log(category)
+          if(category.id === updatedItem.category_id){
+           category.items.map(item => {
+             console.log(item)
+             return item.id === updatedItem.id ? item.name = updatedItem.name : item
+           })
+          }
+        })
+      }))
+      console.log(menuData)
+  }
 
 
   return (
@@ -85,7 +135,12 @@ function App() {
       <Layout currentUser ={currentUser} handleSignOut={handleSignOut}>
         <Switch>
           <Route path ='/create/:menuName'>
-            <CreateItem menuData ={menuData} />
+            <CreateItem 
+            menuData ={menuData} 
+            handleCreateItem={handleCreateItem}
+            handleDeleteItem={handleDeleteItem}
+            handleEditItem={handleEditItem}
+            />
           </Route>
           <Route path ='/SignIn'>
             <SignIn handleSignIn={handleSignIn}/>
