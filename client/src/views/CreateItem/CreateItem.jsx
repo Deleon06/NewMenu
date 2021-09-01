@@ -29,19 +29,21 @@ export default function CreateItem(props) {
             handleCreateItem(input)
         }}>
             <label>
-                Add menu Item
-                <br />
+                <h2>Add menu Item</h2>
+                <label><h4>Category List</h4></label>
                <select className="dropdown" onChange={handleChange} name="category_id">
                {categories.map(category => (
                 <option value={category.id} name={category.name}>{category.name}</option>
                ))}
                </select>
+               <label><h4>item</h4></label>
                 <input
                     name="name"
                     type="text"
                     value = {input.name}
                     onChange={handleChange}
                 />
+                <label><h4>Price</h4></label>
                 <input 
                     name="price"
                     type="Number"
@@ -49,6 +51,7 @@ export default function CreateItem(props) {
                     onChange={handleChange}
                 />
             </label>
+            <br />
             <button>add</button>
         </form>
         {menuData.categories.map((category) => (
