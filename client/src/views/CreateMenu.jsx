@@ -1,6 +1,7 @@
 import { useState} from 'react'
+import { useParams, Link } from 'react-router-dom'
+import DeleteCategory from '../components/DeleteCategory/DeleteCategory'
 import { putMenu } from '../services/menus'
-
 
 export default function CreateMenu(props) {
     
@@ -19,7 +20,7 @@ export default function CreateMenu(props) {
 
     const [menuToggle, setMenuToggle] = useState(false)
     const [editToggle, setEditToggle] = useState(false)
-    const [categoryEditToggle, setCategoryEditToggle] = useState(false)
+ 
     const {name} = menuFormData
     const {categoryName} = editCategoryForm
     const handleCreateMenu = props.handleCreateMenu
@@ -27,7 +28,7 @@ export default function CreateMenu(props) {
     const handleDeleteCategory = props.handleDeleteCategory
     const handleEditCategory= props.handleEditCategory
     const menuData = props.menuData
-   
+    const {menuName} = useParams()
     const handleMenuChange = (e) =>{
         const { name, value } = e.target;
         setMenuFormData((prevState) => ({
@@ -126,43 +127,24 @@ export default function CreateMenu(props) {
                 {console.log(menuData)}
                     {menuData ? (
                          menuData.categories.map((category) => (
-                          
-                           <>
-                                { categoryEditToggle ? (
-                                <form onSubmit={(e) => {
-                                    e.preventDefault();
-                                    handleEditCategory(categoryName, editCategoryForm)
-                                    setCategoryEditToggle(false)
-                                    }}>
-                                    <lable>{category.name}</lable>
-                                    <br/>
-                                    <input 
-                                    type='text'
-                                    categoryName='categoryName'
-                                    id= {category.id}
-                                    value={categoryName}
-                                    onChange={(e) => setEditCategoryForm({categoryName: e.target.value, categoryId: category.id})}
-                                    />
-                                    <button>confirm</button>
-                                </form>
-                                ) : (
-                                <div id={category.id}>
-                                    <div>{category.name}</div>
-                                    <button value={category.id} onClick={()=> setCategoryEditToggle(true)}>edit</button>
-                                    <button value={category.id} onClick={handleDeleteCategory}>delete</button>
-                                </div>
-                                )
-                            }
-                                
-                         
-                        </>)) 
-                    ) : (
+                                    <DeleteCategory 
+                                    category={category} 
+                                    categoryName={categoryName}
+                                    handleEditCategory={handleEditCategory}
+                                    handleDeleteCategory={handleDeleteCategory}
+                                    setEditCategoryForm={setEditCategoryForm}
+                                    editCategoryForm={editCategoryForm}
+                                    />                                
+                                ))
+                           ) : (
                         <>
                         </>
                )
                       }
         <hr/>
+        <Link to={`/create/${menuFormData.name}`}>
             <button>Continue</button>
+        </Link> 
      </div>
     )
 }
