@@ -60,13 +60,15 @@ function App() {
   };
 
   const handleDeleteCategory = async (id) => {
-    console.log(id.target.value)
+    console.log(id.target)
+    console.log(menuData.categories)
     await deleteCategory(id.target.value)
-    menuData.categories = menuData.categories.filter(categories => categories.id != id.target.value)
+    menuData.categories = menuData.categories.filter(categories => categories.id !== parseInt(id.target.value))
     setMenuData(prevState => ({
       ...prevState,
       categories: [...prevState.categories]
     }))
+    console.log(menuData.categories)
     }
 
   const handleEditCategory = async(categoryName, editCategoryForm) => {
