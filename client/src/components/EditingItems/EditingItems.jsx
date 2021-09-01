@@ -9,7 +9,6 @@ export default function EditingItems(props) {
     const handleEditItem = props.handleEditItem
     const {name} = editItemForm
     const handleEditForm = (e) => {
-        console.log(e.target)
         const {name, value} = e.target;
         setEditItemForm((prevState) => ({
             ...prevState,
@@ -40,8 +39,6 @@ export default function EditingItems(props) {
             </form>
        
         ) : (
-           
-            console.log(props),
                 <div>{item.name}
                     <div>${item.price}</div>
                     <button className="DeleteItemButton" id={item.id}  onClick={()=> setItemEditToggle(true)}>edit</button>

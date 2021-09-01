@@ -28,7 +28,7 @@ export const putItem = async(itemData, itemId) => {
     }
 }
 
-export const deleteItem = async(menuId, categoryId, itemId) => {
+export const deleteItem = async(itemId) => {
     try {
     const res = await api.delete(`/items/${itemId}`)
     return res

@@ -95,13 +95,20 @@ function App() {
   }
 
   const handleDeleteItem = async (id) => {
-    await deleteItem(id.target.value)
-    menuData.categories.items = menuData.categories.items.filter(item => item.id !== parseInt(id.target.value))
+    console.log(id.target.id)
+    await deleteItem(parseInt(id.target.id))
+
+   menuData.categories.map(category => 
+    category.items = category.items.filter(item => 
+        item.id !== parseInt(id.target.id)
+    ))
     setMenuData(prevState => ({
       ...prevState,
-      categories: [...prevState.categories.items]
+      categories: [...prevState.categories]
     }))
+
     }
+  
 
  const handleEditItem = async( editItemForm) => {
       const updatedItem = await putItem({name: editItemForm.name}, editItemForm.item_id)
