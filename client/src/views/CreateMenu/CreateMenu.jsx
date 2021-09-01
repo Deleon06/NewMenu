@@ -1,5 +1,5 @@
 import { useState} from 'react'
-import { useParams, Link } from 'react-router-dom'
+import {  Link } from 'react-router-dom'
 import DeleteCategory from '../../components/DeleteCategory/DeleteCategory'
 import { putMenu } from '../../services/menus'
 
@@ -28,7 +28,6 @@ export default function CreateMenu(props) {
     const handleDeleteCategory = props.handleDeleteCategory
     const handleEditCategory= props.handleEditCategory
     const menuData = props.menuData
-    const {menuName} = useParams()
     const handleMenuChange = (e) =>{
         const { name, value } = e.target;
         setMenuFormData((prevState) => ({
