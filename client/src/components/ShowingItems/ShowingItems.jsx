@@ -6,8 +6,7 @@ import './ShowingItems.css'
 export default function ShowingItems(props) {
     
     const handleDeleteItem = props.handleDeleteItem
-    const itemName = props.itemName
-    const editItemForm = props.editItemForm
+    const handleEditItem = props.handleEditItem
     const menuData = props.menuData
     return (
         <>
@@ -19,8 +18,7 @@ export default function ShowingItems(props) {
             <EditingItems
             item ={item}
             handleDeleteItem={handleDeleteItem}
-            editItemForm={editItemForm}
-            itemName ={itemName}
+            handleEditItem  = {handleEditItem }
             menuData ={menuData}
             />
         ))}

@@ -19,7 +19,7 @@ export const addItemToCategory = async (itemData) => {
     }
 }
 
-export const putItem = async(menuId,categoryId,itemId,itemData) => {
+export const putItem = async(itemData, itemId) => {
     try {
     const res = await api.put(`/items/${itemId}`, {item: itemData})
     return res.data
