@@ -10,8 +10,8 @@ export default function ShowingItems(props) {
     return (
         <>
         <div id={props.category.id} key={props.category.id}>
-            <div>{props.category.name}
-            </div> </div>
+            <h3>{props.category.name}</h3>
+            </div>
             {
         props.category.items.map((item) => (
             <EditingItems
