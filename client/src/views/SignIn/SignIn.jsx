@@ -1,5 +1,6 @@
 import {useState} from 'react'
 import {Link} from 'react-router-dom'
+import "./SignIn.css"
 
 export default function SignIn(props) {
     const [formData, setFormData] = useState({ username: '', password: ''})
@@ -22,6 +23,7 @@ export default function SignIn(props) {
             <h3>SignIn</h3>
             <label>
                 Username:
+                <br />
                 <input 
                     type='text'
                     name='username' 
@@ -32,6 +34,7 @@ export default function SignIn(props) {
             <br />
             <label>
                 Password:
+                <br />
                 <input
                     type="password" 
                     name='password' 
@@ -41,7 +44,8 @@ export default function SignIn(props) {
             </label>
             <br />
             <Link to="/register">Register</Link>
-            <button>Submit</button>
+
+            <button className="sign_in_button">Submit</button>
         </form>
     )
 }
