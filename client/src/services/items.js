@@ -10,9 +10,9 @@ export const getAllItems = async () => {
 }
 
 
-export const addItemToCategory = async (menuId,categoryId, itemData) => {
+export const addItemToCategory = async (itemData) => {
     try {
-    const res = await api.post(`menus/${menuId}/categories/${categoryId}/items`, {item: itemData})
+    const res = await api.post(`/items`, {item: (itemData)})
     return res.data
     } catch(e) {
         throw e;
@@ -21,7 +21,7 @@ export const addItemToCategory = async (menuId,categoryId, itemData) => {
 
 export const putItem = async(menuId,categoryId,itemId,itemData) => {
     try {
-    const res = await api.put(`menus/${menuId}/categories/${categoryId}/items/${itemId}`, {item: itemData})
+    const res = await api.put(`/items/${itemId}`, {item: itemData})
     return res.data
     } catch(e) {
         throw e;
@@ -30,7 +30,7 @@ export const putItem = async(menuId,categoryId,itemId,itemData) => {
 
 export const deleteItem = async(menuId, categoryId, itemId) => {
     try {
-    const res = await api.delete(`menus/${menuId}/categories/${categoryId}/items/${itemId}`)
+    const res = await api.delete(`/items/${itemId}`)
     return res
     } catch(e) {
         throw e;

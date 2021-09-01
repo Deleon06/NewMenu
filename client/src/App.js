@@ -11,6 +11,7 @@ import { addCategoryToMenu, deleteCategory, putCategory } from "./services/categ
 import { addMenu} from './services/menus'
 import CreateMenu from './views/CreateMenu/CreateMenu';
 import CreateItem from './views/CreateItem/CreateItem';
+import { addItemToCategory, deleteItem, putItem } from './services/items';
 
 
 function App() {
@@ -47,6 +48,7 @@ function App() {
 
   const handleCreateMenu = async (menuName) => {
     const menuData = await addMenu(menuName);
+   
     setMenuData(menuData)
   };
 
@@ -57,6 +59,14 @@ function App() {
       categories: [...prevState.categories, newCategory]
     }))
   };
+
+  const handleCreateItem = async(itemsFormData) => {
+    console.log(itemsFormData)
+    const newItem = await addItemToCategory(itemsFormData);
+    console.log(newItem)
+    // setMenuData(prevState => ({
+    //   ...prevState,
+  }
 
   const handleDeleteCategory = async (id) => {
     await deleteCategory(id.target.value)
@@ -78,6 +88,25 @@ function App() {
       }))
   }
 
+  const handleDeleteItem = async (id) => {
+    await deleteItem(id.target.value)
+    menuData.categories.items = menuData.categories.items.filter(item => item.id !== parseInt(id.target.value))
+    setMenuData(prevState => ({
+      ...prevState,
+      categories: [...prevState.categories.items]
+    }))
+    }
+
+  const handleEditItem = async(itemName, editItemForm) => {
+      const updatedItem = await putItem({name: itemName}, editItemForm.itemId)
+      menuData.categories = menuData.categories.map(item => {
+        return item.id === updatedItem.id ? updatedItem : item
+      })
+      setMenuData(prevState => ({
+        ...prevState,
+        categories: [...prevState.categories.items]
+      }))
+  }
 
 
   return (
@@ -85,7 +114,10 @@ function App() {
       <Layout currentUser ={currentUser} handleSignOut={handleSignOut}>
         <Switch>
           <Route path ='/create/:menuName'>
-            <CreateItem menuData ={menuData} />
+            <CreateItem 
+            menuData ={menuData} 
+            handleCreateItem={handleCreateItem}
+            />
           </Route>
           <Route path ='/SignIn'>
             <SignIn handleSignIn={handleSignIn}/>

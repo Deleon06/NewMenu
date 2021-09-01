@@ -1,17 +1,16 @@
 import React from 'react'
 import { useState } from 'react'
-import './DeleteCategory.css'
+import './ShowingItems.css'
 
-export default function DeleteCategory(props) {
+export default function ShowingItems(props) {
     const [categoryEditToggle, setCategoryEditToggle] = useState(false)
-    const handleDeleteCategory = props.handleDeleteCategory
-    const categoryName = props.categoryName
-    const editCategoryForm = props.editCategoryForm
-    
+    // const handleDeleteCategory = props.handleDeleteCategory
+    // const categoryName = props.categoryName
+    // const editCategoryForm = props.editCategoryForm
 
     return (
         <>
-        { categoryEditToggle ? 
+        { categoryEditToggle ?
         (
             <form onSubmit={(e) => {
                 e.preventDefault();
