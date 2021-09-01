@@ -13,7 +13,6 @@ import CreateMenu from './views/CreateMenu/CreateMenu';
 import CreateItem from './views/CreateItem/CreateItem';
 
 
-
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [menuData, setMenuData] = useState(null)
