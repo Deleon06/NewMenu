@@ -1,0 +1,9 @@
+.initial_nav{
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px;
+}
+
+.sign_in{
+    padding-right: 30px;
+}

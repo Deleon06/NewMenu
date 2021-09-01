@@ -1,7 +1,7 @@
 import { useState} from 'react'
 import { useParams, Link } from 'react-router-dom'
-import DeleteCategory from '../components/DeleteCategory/DeleteCategory'
-import { putMenu } from '../services/menus'
+import DeleteCategory from '../../components/DeleteCategory/DeleteCategory'
+import { putMenu } from '../../services/menus'
 
 export default function CreateMenu(props) {
     

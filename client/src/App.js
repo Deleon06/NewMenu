@@ -1,16 +1,16 @@
 import './App.css';
 import './layouts/Layout'
 import Layout from './layouts/Layout';
-import SignIn from './views/SignIn';
+import SignIn from './views/SignIn/SignIn';
 import {Switch, Route, useHistory} from 'react-router-dom'
 import {useState, useEffect} from 'react'
 import { registerUser, removeToken, signInUser, verifyUser } from './services/auth';
-import Register from './views/Register';
+import Register from './views/Register/Register';
 import MainContainer from './containers/MainContainer';
 import { addCategoryToMenu, deleteCategory, putCategory } from "./services/categories"
 import { addMenu} from './services/menus'
-import CreateMenu from './views/CreateMenu';
-import CreateItem from './views/CreateItem';
+import CreateMenu from './views/CreateMenu/CreateMenu';
+import CreateItem from './views/CreateItem/CreateItem';
 
 
 function App() {

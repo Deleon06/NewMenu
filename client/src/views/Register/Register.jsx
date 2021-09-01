@@ -1,5 +1,6 @@
 import {useState} from 'react'
 import {Link} from 'react-router-dom'
+import './Register.css'
 
 export default function Register(props) {
     const [formData, setFormData] = useState({ username: '', email: '',password: ''})
@@ -22,6 +23,7 @@ export default function Register(props) {
             <h3>Register</h3>
             <label>
                 Username:
+                <br />
                 <input 
                     type='text'
                     name='username' 
@@ -30,8 +32,9 @@ export default function Register(props) {
                 />
             </label>
             <br />
-            <label>
+            <label className="email_input">
                 Email:
+                <br />
                 <input 
                     type='text'
                     name='email' 
@@ -42,6 +45,7 @@ export default function Register(props) {
             <br />
             <label>
                 Password:
+                <br />
                 <input
                     type="password" 
                     name='password' 
@@ -50,8 +54,9 @@ export default function Register(props) {
                 />
             </label>
             <br />
+            <br />
             <Link to="/signin">Already Register?</Link>
-            <button>Submit</button>
+            <button className="submit">Submit</button>
         </form>
     )
 }

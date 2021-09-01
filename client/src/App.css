@@ -1,10 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
+
 .App {
   text-align: center;
   background-color: #EFE2BA;
   height: auto;
   margin: 0;
   text-decoration: none;
-  color: #4056A1
+  color: #4056A1;
+  font-family: "Shadows Into Light", cursive;
+}
+
+p{
+  font-size: larger;
+}
+.App-link {
+  color: #61dafb;
 }
 
 a:link {
@@ -25,4 +35,13 @@ a:hover {
 a:active {
   text-decoration: underline;
   color: #4056A1
+}
+
+@media only screen and (max-width: 768px) {
+  p{
+    font-size: medium;
+  }
+  h2{
+    font-size: large;
+  }
 }
