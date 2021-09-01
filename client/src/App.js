@@ -29,13 +29,13 @@ function App() {
   const handleSignIn = async(signInData) => {
     const userData = await signInUser(signInData)
     setCurrentUser(userData)
-    history.push('/show')
+    history.push('/')
   }
 
   const handleRegister = async(registerData) => {
     const userData = await registerUser(registerData)
     setCurrentUser(userData)
-    history.push('/show')
+    history.push('/')
   }
 
   const handleSignOut = () => {
@@ -48,7 +48,6 @@ function App() {
   const handleCreateMenu = async (menuName) => {
     const menuData = await addMenu(menuName);
     setMenuData(menuData)
-    // history.push('/show');
   };
 
   const handleCreateCategory = async (categoryFormData) => {
@@ -60,19 +59,15 @@ function App() {
   };
 
   const handleDeleteCategory = async (id) => {
-    console.log(id.target)
-    console.log(menuData.categories)
     await deleteCategory(id.target.value)
     menuData.categories = menuData.categories.filter(categories => categories.id !== parseInt(id.target.value))
     setMenuData(prevState => ({
       ...prevState,
       categories: [...prevState.categories]
     }))
-    console.log(menuData.categories)
     }
 
   const handleEditCategory = async(categoryName, editCategoryForm) => {
-      console.log(editCategoryForm)
       const updatedCategory = await putCategory({name: categoryName}, editCategoryForm.categoryId)
       menuData.categories = menuData.categories.map(category => {
         return category.id === updatedCategory.id ? updatedCategory : category
