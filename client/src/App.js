@@ -63,14 +63,17 @@ function App() {
   const handleCreateItem = async(itemsFormData) => {
     const newItem = await addItemToCategory(itemsFormData);
     console.log(menuData.categories)
-    console.log(newItem)
-    menuData.categories = menuData.categories.map(category => {
-      return category.id === newItem.category_id ? category.items.push(newItem) : category
-      })
     setMenuData(prevState => ({
       ...prevState,
-      categories: [...prevState.categories]
+      ...prevState.categories.forEach(category =>{
+        console.log(category)
+        console.log(newItem.category_id)
+        if(category.id === newItem.category_id){
+         category.items.push(newItem)
+        }
+      })
     }))
+    console.log(menuData.categories)
   }
 
   const handleDeleteCategory = async (id) => {

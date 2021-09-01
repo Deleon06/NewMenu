@@ -42,7 +42,7 @@ class ItemsController < ApplicationController
     @category = Category.find(params[:category_id])
     @category.items << @item
 
-    render json: @category, include: :items
+    render json: @category
   end
   private
     # Use callbacks to share common setup or constraints between actions.
