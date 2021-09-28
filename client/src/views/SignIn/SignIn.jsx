@@ -20,7 +20,7 @@ export default function SignIn(props) {
             e.preventDefault()
             handleSignIn(formData)
             }}>
-            <h3>SignIn</h3>
+            <h3>Sign In</h3>
             <label>
                 Username:
                 <br />

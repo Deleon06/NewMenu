@@ -13,7 +13,7 @@ export default function NavBar(props) {
                     </div>
                 ) : (
                     <div className="initial_nav">
-                        <div className='sign_in'><Link to='/signin'>Signin</Link></div>
+                        <div className='sign_in'><Link to='/signin'>Sign In</Link></div>
                         <div className='register'><Link to='/register'>Create an Account</Link></div>
                     </div>
                 )
